@@ -33,6 +33,9 @@ namespace Control_System.Controllers
         [HttpPost]
         public async Task<IActionResult> Crear([FromBody] ProductRegister objeto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            
             bool respuesta = await _productRegisterData.Create(objeto);
             return StatusCode(StatusCodes.Status200OK, new { isSuccess = respuesta });
         }
@@ -40,6 +43,9 @@ namespace Control_System.Controllers
         [HttpPut]
         public async Task<IActionResult> Editar([FromBody] ProductRegister objeto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            
             bool respuesta = await _productRegisterData.Update(objeto);
             return StatusCode(StatusCodes.Status200OK, new { isSuccess = respuesta });
         }

@@ -22,5 +22,9 @@ namespace Control_System.Models
         [Required(ErrorMessage = "El proveedor es obligatorio")]
         [StringLength(100)]
         public string Provider { get; set; }
+
+        [Required(ErrorMessage = "El porcentaje de IVA es obligatorio")]
+        [Range(0, 100, ErrorMessage = "El IVA debe estar entre 0 y 100")]
+        public decimal IVA { get; set; }
     }
 }

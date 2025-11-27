@@ -34,7 +34,8 @@ namespace Control_System.Data
                             Price = (decimal)reader["Price"],
                             Cant = (int)reader["Cant"],
                             TypeProduct = reader["TypeProduct"].ToString()!,
-                            Provider = reader["Provider"].ToString()!
+                            Provider = reader["Provider"].ToString()!,
+                            IVA = (decimal)reader["IVA"]
                         });
                     }
                 }
@@ -65,7 +66,8 @@ namespace Control_System.Data
                             Price = (decimal)reader["Price"],
                             Cant = (int)reader["Cant"],
                             TypeProduct = reader["TypeProduct"].ToString()!,
-                            Provider = reader["Provider"].ToString()!
+                            Provider = reader["Provider"].ToString()!,
+                            IVA = (decimal)reader["IVA"]
                         };
                     }
                 }
@@ -85,6 +87,7 @@ namespace Control_System.Data
                 cmd.Parameters.AddWithValue("@Cant", objeto.Cant);
                 cmd.Parameters.AddWithValue("@TypeProduct", objeto.TypeProduct);
                 cmd.Parameters.AddWithValue("@Provider", objeto.Provider);
+                cmd.Parameters.AddWithValue("@IVA", objeto.IVA);
                 cmd.CommandType = CommandType.StoredProcedure;
                 try
                 {
@@ -113,6 +116,7 @@ namespace Control_System.Data
                 cmd.Parameters.AddWithValue("@Cant", objeto.Cant);
                 cmd.Parameters.AddWithValue("@TypeProduct", objeto.TypeProduct);
                 cmd.Parameters.AddWithValue("@Provider", objeto.Provider);
+                cmd.Parameters.AddWithValue("@IVA", objeto.IVA);
                 cmd.CommandType = CommandType.StoredProcedure;
                 try
                 {
