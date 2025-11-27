@@ -17,55 +17,55 @@ namespace Control_System.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Lista()
+        public async Task<IActionResult> List()
         {
-            List<ProductRegister> Lista = new List<ProductRegister>();
+            List<ProductRegister> List = new List<ProductRegister>();
 
-            Lista = await _productRegisterData.ListProductsRegisters();
+            List = await _productRegisterData.ListProductsRegisters();
 
-            var resultStatus = StatusCode(StatusCodes.Status200OK, Lista);
+            var resultStatus = StatusCode(StatusCodes.Status200OK, List);
 
             return resultStatus;
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Obtener(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            ProductRegister objeto = new ProductRegister();
+            ProductRegister objectP = new ProductRegister();
 
-            objeto = await _productRegisterData.GetProductRegister(id);
+            objectP = await _productRegisterData.GetProductRegister(id);
 
-            var resultStatus = StatusCode(StatusCodes.Status200OK, objeto);
+            var resultStatus = StatusCode(StatusCodes.Status200OK, objectP);
 
             return resultStatus;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Crear([FromBody] ProductRegister objeto)
+        public async Task<IActionResult> Create([FromBody] ProductRegister objectP)
         {
-            bool respuesta = await _productRegisterData.Create(objeto);
+            bool response = await _productRegisterData.Create(objectP);
 
-            var resultStatus = StatusCode(StatusCodes.Status200OK, new { isSuccess = respuesta });
+            var resultStatus = StatusCode(StatusCodes.Status200OK, new { isSuccess = response });
 
             return resultStatus;
         }
 
         [HttpPut]
-        public async Task<IActionResult> Editar([FromBody] ProductRegister objeto)
+        public async Task<IActionResult> Update([FromBody] ProductRegister objectP)
         {
-            bool respuesta = await _productRegisterData.Update(objeto);
+            bool response = await _productRegisterData.Update(objectP);
 
-            var resultStatus = StatusCode(StatusCodes.Status200OK, new { isSuccess = respuesta });
+            var resultStatus = StatusCode(StatusCodes.Status200OK, new { isSuccess = response });
 
             return resultStatus;
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Eliminar(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            bool respuesta = await _productRegisterData.Delete(id);
+            bool response = await _productRegisterData.Delete(id);
 
-            var resultStatus = StatusCode(StatusCodes.Status200OK, new { isSuccess = respuesta });
+            var resultStatus = StatusCode(StatusCodes.Status200OK, new { isSuccess = response });
 
             return resultStatus;
         }
